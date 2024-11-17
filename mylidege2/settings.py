@@ -114,10 +114,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'applicantsReg.CustomUser'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
-CSRF_TRUSTED_ORIGINS = [
-    'https://web-production-d7e6.up.railway.app'
-]
-
 
 
 
