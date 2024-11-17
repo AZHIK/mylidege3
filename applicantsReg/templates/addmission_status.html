@@ -1,0 +1,85 @@
+{%extends 'base5.html'%}
+{%load static%}
+{%load crispy_forms_tags%}
+
+{%block content%}
+ <div class="row" style="padding-top: 2rem; background-color:#f1e7dd27 ;">
+   <div class="col-md-1">
+
+
+   </div>
+   <div class="col-md-10" style="height: auto;">
+    <div class="card mt-3" style=" background-color:#b3967c2d ">
+      <div class="card-header d-flex flex-column align-items-center">
+        
+      {% if applicant_details.profile_image %}
+      <img class="rounded-circle" style="width:100px; height: 100px; margin-top: 2rem;" 
+      src="{{applicant_details.profile_image.url}}" alt="">
+    {%else%}
+    <img class="rounded-circle" style="width:100px; height: 100px; margin-top: 2rem;" 
+    src="{%static 'img/avatar.jpg'%}" alt="">
+    {% endif %}
+
+      <h6 style="text-align: center;"><strong>{{applicant_details.firstname}} {{applicant_details.last_name}}</strong></h6>
+               <h6 style="text-align: center; margin-bottom: 2rem;">{{applicant_details.user.email}}</h6>
+      </div>
+        {%if addmitted.addmission_approval == "Approved"%}
+        <p style="text-align: center; margin-top: 1rem; margin-bottom: 1rem; color: orange;">
+        <strong>!!!!!Congratulations {{applicant_details.firstname}}  {{applicant_details.last_name}} {{addmitted.feedback}}
+        </p>
+        <table class="table table-striped table-bordered">
+            <tbody>
+              <tr>
+                <th scope="row">Country Admitted</th>
+                <td>{{addmitted.country_selected}}</td>
+              </tr>
+              <tr>
+                <th scope="row">University Admitted</th>
+                <td>{{addmitted.addmitted_university}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Programme Allocated</th>
+                <td>{{addmitted.allocated_progrramme}}</td>
+              </tr>
+              <tr>
+                <th scope="row">Tution Payment</th>
+                <td>
+                    {%if addmitted.tuition_fees_payment_reciept %}
+                    <a href="{{addmitted.tuition_fees_payment_reciept.url}}" class="btn btn-warning" style="width: 70%; margin-left: 15%;">RECIEPT</a>
+                    {%endif%}
+                </td>  
+              </tr>
+
+              <tr>
+                <th scope="row">Hostel Fees Payment</th>
+                <td>
+                    {%if addmitted.tuition_fees_payment_reciept %}
+                    <a href="{{addmitted.hostel_fees_payment_reciept.url}}" class="btn btn-warning" style="width: 70%; margin-left: 15%;">RECIEPT</a>
+                    {%endif%}
+                </td>
+              </tr>
+
+              <tr>
+                {%if addmitted.addmission_leter %}
+                <td colspan="2"><a class="btn " href="{{addmitted.addmission_leter.url}}" style="width: 40%; margin-left: 30%; background-color: #974b00; color: white;">Download Addmission leter</a></td>
+                {%endif%}
+              </tr>
+            </tbody>
+          </table>
+
+          {%elif addmitted.addmission_approval == "Rejected" %}
+          <td colspan="2"><a class="btn btn-danger" href="{{addmitted.addmission_leter.url}}" style="width: 40%; margin-left: 30%;">Sorry your application is not approved please contact your application supervisor to know the reason</a></td>
+          {%else%}
+          <h6 style="margin-top: 2rem; margin-bottom: 3rem; color: orange; text-align: center;">Your addmission is pending, please keep on waiting with patience..........<strong></strong></h6>
+          {%endif%}
+            
+                 
+    </div>
+   </div>
+
+   <div class="col-md-1">
+
+
+   </div>
+ </div>
+{%endblock%}

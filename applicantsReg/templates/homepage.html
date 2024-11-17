@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+<title>Homepage</title>
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+  <div class="row mx-0" style="padding: 1rem 0;">
+    <div class="col-md-4 d-flex justify-content-center align-items-center">
+      <div style=" border: 5px solid #974b00 ; margin-bottom: 1rem;">
+        <img class="animate__animated animate__bounceIn animate__delay-0.5s" style="background-color: white; width: 70%; margin-bottom: 1rem; margin-left: 15%;" src="{% static 'img/General_log_page-0001-removebg-preview.png' %}" alt="">
+      </div>
+    </div>
+    <div class="col-md-6 d-flex flex-column align-items-center justify-content-center">
+      <a href="{% url 'register' %}" class="text-decoration-none btn" style="height: 5rem; background-color:#5c3610 ; width:96%; border-radius: 50px; padding: 10px 20px; margin-bottom: 1rem;" >
+        <h2 class="text-center text-white mb-0" style="padding: 0.3rem;">LIDEGE EDUCATION LINK</h2> 
+      </a>
+      <a href="{% url 'register' %}" class="text-decoration-none btn" style="height: 5rem; background-color:#974b00 ; width:96%; border-radius: 50px; padding: 10px 20px; margin-bottom: 1rem; " >
+        <h2 class="text-center text-white mb-0" style="padding: 0.3rem;">LIDEGE MEDICAL TOURISM</h2> 
+      </a>
+      <a href="{% url 'register' %}" class="text-decoration-none btn" style="height: 5rem; background-color:#5c3610 ; width:96%; border-radius: 50px; padding: 10px 20px; margin-bottom: 1rem;" >
+        <h2 class="text-center text-white mb-0" style="padding: 0.3rem;">LIDEGE LOGISTICS</h2> 
+      </a>
+    </div>
+    <div class="col-md-2 animate__animated animate__fadeInRightBig animate__delay-2.5s" style="background-color: #8f551a;">
+      <div class="card mt-2" style="">
+        <img class="card-img-top" src="{% static 'img/student1.png' %}" alt="Student Image">
+        <div class="card-body">
+          <p>Degrees from Global institutions hold weight in the international job market, making graduates competitive and sought after by employers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mx-0" style="height: 10rem; background-color: #5c3610;">
+    <div style="height: 98%; width: 98%; background-color: white; margin-top: 0.5rem; margin-left: 1%;">
+
+    </div>
+  </div>
+</div>
+{% endblock %}

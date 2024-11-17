@@ -1,0 +1,40 @@
+{%extends 'base.html'%}
+{%load static%}
+{%load crispy_forms_tags%}
+
+{%block tittle%}
+<title>login</title>
+{%endblock%}
+
+{%block content%}
+<div class="row" style="background-color: #D9CCC1">
+    <div class="col-md-2">
+
+    </div>
+    <div class="col-lg-8">
+        <div class="card" style="width: 100%; padding: 1rem; margin-top: 1rem; margin-bottom: 5rem;">
+            <div class="row">
+                <div class="col-md-6" style="border: solid 5px #974b00;">
+                   <img style="width: 100%;" src="{%static 'img/lidege_logo__1__page-0001-removebg-preview.png'%}" alt="">
+                </div>
+                <div class="col-md-6">
+                    <h5 style="text-align: center;margin-top: 3rem;">Login</h5>
+                    <form action="" method="POST">
+                        {%csrf_token%}  
+                        {{form|crispy}}      
+                        <input type="submit" value="Login" class="btn" style="background-color:#974b00; color: white; width: 40%; margin-top: 0.4rem; margin-left: 30%;">
+                    </form>
+                    <p style="margin-top: 0.3rem; text-align: center;">Dont have account?<a href="{%url 'register'%}" style="text-decoration: none;">Register here</a></p>
+                        <p style="text-align:end; margin-top: 3rem; "><a href="" style="text-decoration: none; color: black;"> forget password?</a></p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+
+    </div>
+    
+</div>
+
+{%endblock%}

@@ -1,0 +1,1 @@
+web: gunicorn 'mylidege2.wsgi'

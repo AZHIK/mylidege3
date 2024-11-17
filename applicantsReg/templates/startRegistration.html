@@ -1,0 +1,29 @@
+{%extends 'base7.html'%}
+{%load static%}
+{%load crispy_forms_tags%}
+
+{%block tittle%}
+<title>start registration</title>
+{%endblock%}
+
+{%block content%}
+<div class="row" style="background-color:#cfc7bf85; height: 50rem;">
+<div class="col-md-2">
+
+</div>
+<div class="col-md-8">
+<h1 style="text-align: center; margin-top: 11rem; font-family: Arial, Helvetica, sans-serif;">
+    TO APPLY YOU ARE REQUIRED TO PROVIDE YOUR INFORMATION
+</h1>
+<h4 style="text-align: center; margin-top: 1rem; font-family: Georgia, 'Times New Roman', Times, serif; color: rgb(66, 35, 35);">
+    <strong>
+        your Account will Be valid in seven days make sure you complete your application within seven days
+    </strong>
+</h4>
+<a href="{%url 'applicant_details'%}" class="btn" style="background-color:#974b00; width: 40%; margin-left: 30%; color: white; border-radius: 50px; padding: 10px 20px;">start Here!!!!</a>
+</div>
+<div class="col-md-2">
+
+</div>
+</div>
+{%endblock%}

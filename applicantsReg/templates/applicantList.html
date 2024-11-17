@@ -1,0 +1,140 @@
+{%load static%}
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Hugo 0.84.0">
+    <title>applicant list</title>
+
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<meta name="theme-color" content="#7952b3">
+
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="offcanvas.css" rel="stylesheet">
+  </head>
+  <body style="background-color: #D9CCC1; width: cover;">
+    <header class="navbar navbar-dark sticky-top flex-md-nowrap p-0 shadow" style="width: cover; background-color:#974b00 ;">
+        <a class="navbar-brand col-md-3 col-lg-2 me-0 px-3" href="#"></a>
+        <button class="navbar-toggler d-md-none collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation" style="margin-left: 10rem;">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-nav">
+          <div class="nav-item text-nowrap">
+              
+            <a class="btn px-3" style="margin: 0.2rem; background-color:#d1bdaa83 ;" href="{%url 'logout'%}"><i class="fa-solid fa-right-from-bracket"></i><strong>Sign out</strong></a>
+          </div>
+        </div>
+      </header>
+
+<main class="container">
+  <div class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sm">
+  </div>
+ <div style="height:auto; margin-top: 1rem;">
+  <a class="btn" style="width: 70%; margin-left: 15%; margin-bottom: 1rem; background-color: #695c51; color: white;" href="{%url 'refferal'%}">
+    <i class="fa-solid fa-link"></i>
+    Invite applicants through your refferal link</a>
+ </div>
+  {%if user.is_superuser%}
+  <div class="card" style="padding-bottom: 1rem;">
+    <div class="card-header">
+      <h3 style="text-align: center; margin-top: 1rem; color: brown;">STAFF</h3>
+    </div>
+    <div class="card-body table-responsive">
+      
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Username</th>
+            <th scope="col">email</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for userdet in myusers%} 
+          {%if userdet.is_staff%}
+          <tr>
+            <td>{{userdet.username}}</td>
+            <td>{{userdet.email}}</td>
+            <td> <a class="btn btn-danger" href="/admin/applicantsReg/customuser">DELETE</a></td>
+          </tr>
+          {%endif%}
+          {%endfor%}
+        </tbody>
+      </table>
+      
+      <a href="/admin/applicantsReg/customuser" class="btn btn-warning" style="width: 60%; margin-left: 20%; margin-top: 1rem;">Add staff</a>
+    </div>
+  </div>
+
+    {%endif%}
+
+    
+
+  <div class="card mt-3" style="background-color:">
+    <div class="card-header">
+      <h6 style="color: brown; margin: 1rem;">New Applicants</h6>
+    </div>
+    <div class="card-body table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Profile image</th>
+            <th scope="col">Full Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">admission status</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%for app in applicant_details%}
+          {% if app.profile_image%}
+          <tr>
+            <td>
+              <img  src="{{app.profile_image.url}}" class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="50" height="50"  aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><rect width="100%" height="100%" fill="#007bff"/></svg>
+            </td>
+
+            <td>{{app.firstname}}  {{app.last_name}}</td>
+            <td>{{app.user.email}}</td>
+            <td><a class="btn btn-success" href="{%url 'addmission_status_staff' app.user.id%}" >view</a></td>
+            <td> <a class="btn btn-warning" href="{%url 'appview' app.user.id%}">admit student</a></td>
+          </tr>
+          {%endif%}
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+  </main>
+
+
+    <script src="/docs/5.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+      <script src="offcanvas.js"></script>
+  </body>
+</html>

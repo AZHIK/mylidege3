@@ -1,0 +1,319 @@
+{%extends 'base5.html'%}
+{%load static%}
+{%load crispy_forms_tags%}
+
+{%block tittle%}
+<title>profile</title>
+{%endblock%}
+
+{%block content%}
+ <div class="row" style="padding-top: 1rem; background-color:#f1e7dd27 ;">
+   <div class="col-md-12" style="height: auto;">
+    <a class="btn btn-dark" style="width: 90%; margin-left: 5%; margin-bottom:1rem; background-color:#974b00; border-radius: 50px; padding: 10px 20px;" href="{%url 'startApplication'%}">
+      <i class="fa-solid fa-backward"></i>
+    Back to application
+  </a>
+    <div class="card mt-1" style="background-color:#b3967c2d ;">
+      <div class="card-header d-flex flex-column align-items-center">
+        {% if applicant_details.profile_image %}
+        <img class="rounded-circle" style="width:100px; height: 100px; margin-top: 2rem;" 
+        src="{{applicant_details.profile_image.url}}" alt="">
+      {%else%}
+      <img class="rounded-circle" style="width:150px; height: 150px; margin-top: 2rem;" 
+      src="{%static 'img/avatar.jpg'%}" alt="">
+      {% endif %}
+
+        <h6 style="text-align: center;"><strong>{{applicant_details.firstname}} {{applicant_details.last_name}}</strong></h6>
+                 <h6 style="text-align: center; margin-bottom: 2rem;">{{applicant_details.user.email}}</h6>
+      </div>
+  
+
+                 <div class="accordion" id="accordionPanelsStayOpenExample">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"  data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="false" aria-controls="panelsStayOpen-collapseOne">
+                        <h5 style="text-align: center;">PERSONAL DETAILS</h5>
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingOne">
+                      <div class="accordion-body">
+                        <table class="table table-striped table-bordered">
+                          <tbody>
+                            <tr>
+                              <th scope="row">Firstname</th>
+                              <td>{{applicant_details.firstname}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Last name</th>
+                              <td>{{applicant_details.last_name}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Date of Birth</th>
+                              <td>{{applicant_details.date_of_birth}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Nationality</th>
+                              <td>{{applicant_details.nationality}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Phone Number</th>
+                              <td>{{applicant_details.phone}}</td>
+                            </tr>
+
+                            <tr>
+                              <td colspan="2"><a class="btn " href="{%url 'applicant_details'%}" style="width: 70%; margin-left: 15%; background-color:#974b00; color: white;">MODIFY/DELETE</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+                        <h5 style="text-align: center;">GUARDIAN DETAILS</h5>
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+                      <div class="accordion-body">
+                         
+                        <table class="table table-striped table-bordered">
+                          <tbody>
+                            <tr>
+                              <th scope="row">Fathername</th>
+                              <td>{{guardian_details.fathername}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Mothername</th>
+                              <td>{{guardian_details.mothername}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Next of kin</th>
+                              <td>{{guardian_details.next_of_kin}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Next of kin relationship</th>
+                              <td>{{guardian_details.next_of_kin_relationship}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Next of kin phone</th>
+                              <td>{{guardian_details.next_of_kin_phone}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Next of kin email</th>
+                              <td>{{guardian_details.next_of_kin_email}}</td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Next of kin country</th>
+                              <td>{{guardian_details.next_of_kin_country}}</td>
+                            </tr>
+
+                            <tr>
+                              <th scope="row">Next of kin city</th>
+                              <td>{{guardian_details.next_of_kin_city}}</td>
+                            </tr>
+
+                            <tr>
+                              <td colspan="2"><a class="btn" href="{%url 'guardian'%}" style="width: 70%; margin-left: 15%; background-color:#974b00; color: white;">MODIFY/DELETE</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                        <h5 style="text-align: center;">ACADEMICS</h5>
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+                      <div class="accordion-body">
+                        <table class="table table-striped table-bordered">
+                          <tbody>
+                            
+                            <tr>
+                              <th scope="row">Level of education</th>
+                              <td>{{academic_qualification.level_of_education}}</td>
+                            </tr>
+                            <tr>
+                            
+                            <th scope="row">Certificate_file</th>
+                            {% if academic_qualification.certificate_file %}
+                              <td><a class="btn btn-warning" href="{{academic_qualification.certificate_file.url}}" >VIEW</a></td>
+                            {%endif%}
+                            </tr>
+                          
+                            <tr>
+                              <th scope="row">Results transcripts</th>
+                              {%if academic_qualification.results_transcripts %}
+                              <td><a class="btn btn-warning" href="{{academic_qualification.results_transcripts.url}}" >VIEW</a></td>
+                              {%endif%}
+                            </tr>
+                            <tr>
+                              <th scope="row">school_name</th>
+                              <td>{{academic_qualification.school_name}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">program</th>
+                              <td>{{academic_qualification.program}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Passing_year</th>
+                              <td>{{academic_qualification.passing_year}}</td>
+                            </tr>
+
+                            <tr>
+                              <td colspan="2"><a class="btn" href="{%url 'academics'%}" style="width: 70%; margin-left: 15%; background-color:#974b00; color: white;">MODIFY/DELETE</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingFive">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFive" aria-expanded="false" aria-controls="panelsStayOpen-collapseFive">
+                        <h5 style="text-align: center;">SELECTIONS</h5>
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFive" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFive">
+                      <div class="accordion-body">
+                        <table class="table table-striped table-bordered">
+                          <tbody>     
+                            <tr>
+                              <th scope="row">Level of education</th>
+                              <td>{{selections.education_level}}</td>
+                            </tr>
+                              
+                              <tr>
+                              <td colspan="2"><h5 style="text-align: center; margin-top: 2rem;">First choice</h5>
+                              <tr>
+                                <th scope="row">Country</th>
+                                <td>{{selections.interested_country1}}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">University</th>
+                                <td>{{selections.interested_university1}}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Programme</th>
+                                <td>{{selections.interested_courses1}}</td>
+                              </tr>
+                            
+
+                              <tr>
+                                <td colspan="2"><h5 style="text-align: center; margin-top: 2rem;">Second choice</h5>
+                              <tr>
+                              <tr>
+                                <th scope="row">Country</th>
+                                <td>{{selections.interested_country2}}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">University</th>
+                                <td>{{selections.interested_university2}}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Programme</th>
+                                <td>{{selections.interested_courses2}}</td>
+                              </tr>
+                            
+
+                            <tr>
+                              <td colspan="2"><h5 style="text-align: center; margin-top: 2rem;">Third choice</h5>
+                            <tr>
+                              <tr>
+                                <th scope="row">Country</th>
+                                <td>{{selections.interested_country3}}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">University</th>
+                                <td>{{selections.interested_university3}}</td>
+                              </tr>
+                              <tr>
+                                <th scope="row">Programme</th>
+                                <td>{{selections.interested_courses3}}</td>
+                              </tr>
+                            
+                            
+                            <tr>
+                              <td colspan="2"><a class="btn btn-dark" href="{%url 'selections'%}" style="width: 70%; margin-left: 15%; background-color:#974b00; color: white;">MODIFY/DELETE</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="accordion-item">
+                    <h2 class="accordion-header" id="panelsStayOpen-headingFour">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                        <h5 style="text-align: center;">OTHER QUALIFICATIONS</h5>
+                      </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingFour">
+                      <div class="accordion-body table-responsive">
+                        <table class="table table-striped table-bordered">
+                          <tbody>
+      
+                            <tr>
+                              <th scope="row">professional Qualifications</th>
+                              <td colspan="2">{{other_qualifications.professional_Qualifications}}</td>
+                            </tr>
+                              <th scope="row">working expirience</th>
+                              <td colspan="2">{{other_qualifications.working_expirience}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">computer literacy</th>
+                              <td colspan="2">{{other_qualifications.computer_literacy}}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">CV document</th>
+                              {%if other_qualifications.CV_document %}
+                                <td colspan="2"><a class="btn btn-warning" href="{{other_qualifications.CV_document.url}}"style="margin-left: 23.5rem;" >VIEW</a></td>
+                              {%endif%}
+                              </tr>
+                              <tr>
+                                <th scope="row">Training or workshop</th>
+                                <td>{{other_qualifications.training_or_workshop1}}</td>
+                                {%if other_qualifications.CV_document%}
+                                <td><a class="btn btn-warning" href="{{other_qualifications.other_attachments1.url}}" >VIEW</a></td>
+                                {%endif%}
+                              </tr>
+                              <tr>
+                                <th scope="row">Training or workshop</th>
+                                
+                                <td>{{other_qualifications.training_or_workshop2}}</td>
+                                {%if other_qualifications.other_attachments2%}
+                                <td><a class="btn btn-warning" href="{{other_qualifications.other_attachments2.url}}" >VIEW</a></td>
+                                {%endif%}
+                              </tr>
+                              <tr>
+                                <th scope="row">Training or workshop</th>
+                                
+                                <td>{{other_qualifications.training_or_workshop3}}</td>
+                                {%if other_qualifications.other_attachments3%}
+                                <td><a class="btn btn-warning" href="{{other_qualifications.other_attachments3.url}}" >VIEW</a></td>
+                                {%endif%}
+                              </tr>
+                              
+
+                            <tr>
+                              <td colspan="3"><a class="btn btn-dark" href="{%url 'other'%}" style="width: 70%; margin-left: 15%; background-color:#974b00; color: white;">MODIFY/DELETE</a></td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+
+                  
+                </div>
+    </div>
+   </div>
+ </div>
+{%endblock%}
